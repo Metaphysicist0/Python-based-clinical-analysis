@@ -9,23 +9,23 @@ from scipy.stats import pearsonr
 from scipy.stats import spearmanr
 import seaborn as sns
 
-eye_file = 'eye_results/eye_values.json'
-retina_file = 'retina_results/retina_values.json'
-output_file = 'index_values.json'
+e_file = '/.json'
+re_file = '/.json'
+output_file = '.json'
 
-with open(eye_file, 'r') as f:
-    eye_data = json.load(f)
+with open(e_file, 'r') as f:
+    e_data = json.load(f)
 
-with open(retina_file, 'r') as f:
-    retina_data = json.load(f)
+with open(r_file, 'r') as f:
+    r_data = json.load(f)
 
 ratio_data = {}
 
-for name in eye_data:
-    eye_value = eye_data[name]
-    retina_value = retina_data[name]
+for name in :
+    e_value = e_data[name]
+    r_value = r_data[name]
 
-    ratio = (retina_value / eye_value)*10
+    ratio = (r_value / e_value)*10
     # sigmoid归一化
     # normalized_
     # ratio_data[name] = normalized_ratio
@@ -36,10 +36,10 @@ for name in eye_data:
 with open(output_file, 'w') as f:
     json.dump(ratio_data, f, indent=4)   # 增加缩进
 
-with open('index_values.json') as f:
+with open('.json') as f:
     data = json.load(f)
 
-with open('surgerynumber.json') as f:
+with open('.json') as f:
     surgery_num = json.load(f)
 
 results = {}
@@ -82,15 +82,15 @@ with open('results.json', 'w') as f:
 with open('results.json') as f:
     result = json.load(f)
 
-with open('surgerynumber.json') as f:
-    surgery_num = json.load(f)
+with open('.json') as f:
+    s_num = json.load(f)
 
 # 提取特征
 x = []
 y = []
 
 for id, name1 in result.items():
-    x.append(surgery_num.get(id, 0))
+    x.append(s_num.get(id, 0))
     y.append(name1['mean'])
 
 # 计算皮尔逊相关系数
@@ -178,46 +178,46 @@ import json
 import pandas as pd
 import seaborn as sns
 
-with open('surgerynumber.json') as f:
+with open('.json') as f:
     surgery_nums = json.load(f)
 
 with open('results.json') as f:
     results = json.load(f)
 
-df = pd.DataFrame(columns=['surgery number', 'mean RPR'])
+df = pd.DataFrame(columns=[' ', 'mean RPR'])
 
 for id, data in results.items():
     surgery_num = surgery_nums[id]
     mean = data['mean']
     if mean < 0.99999:
-        df = df.append({'surgery number': surgery_num,
+        df = df.append({' ': surgery_num,
                             'mean RPR': mean}, ignore_index=True)
-g = sns.catplot(x="surgery number", y="mean RPR", data=df, kind="box")
+g = sns.catplot(x=" ", y="mean RPR", data=df, kind="box")
 g.set_titles("{col_name}")
 
 plt.show()
 
-# 计算各组手术次数对应的平均值和标准差
-groups = df['surgery number'].unique()
+
+groups = df[' '].unique()
 means = []
 stds = []
 for g in groups:
-    mean = df[df['surgery number'] == g]['mean RPR'].mean()
+    mean = df[df[' '] == g]['mean RPR'].mean()
     means.append(mean)
 
-g = sns.catplot(x="surgery number", y="mean RPR", data=df, kind="box")
+g = sns.catplot(x=" ", y="mean RPR", data=df, kind="box")
 
 import json
 import pandas as pd
 import seaborn as sns
 
-with open('surgerynumber.json') as f:
+with open('.json') as f:
     surgery_nums = json.load(f)
 
 with open('results.json') as f:
     results = json.load(f)
 
-df = pd.DataFrame(columns=['surgery number', 'mean RPR'])
+df = pd.DataFrame(columns=[' ', 'mean RPR'])
 
 num_dict = {}
 
@@ -225,17 +225,17 @@ for id, data in results.items():
     surgery_num = surgery_nums[id]
     mean = data['mean']
     if mean < 0.99999:
-        df = df.append({'surgery number': surgery_num,
+        df = df.append({' ': surgery_num,
                         'mean RPR': mean}, ignore_index=True)
 
         if surgery_num not in num_dict:
             num_dict[surgery_num] = 0
         num_dict[surgery_num] += 1
 
-print("手术次数对应的人数:")
+print(":")
 print(num_dict)
 
-g = sns.catplot(x="surgery number", y="mean RPR", data=df, kind="box")
+g = sns.catplot(x=" ", y="mean RPR", data=df, kind="box")
 g.set_titles("{col_name}")
 
 plt.show()
