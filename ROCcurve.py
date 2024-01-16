@@ -17,10 +17,10 @@ import matplotlib.pyplot as plt
 
 # Step 2: 加载和准备数据
 # 加载数据
-with open('results.json') as f:
+with open('.json') as f:
     data_a = json.load(f)
 
-with open('eyesuccess.json') as f:
+with open('.json') as f:
     data_c = json.load(f)
 
 # 转换成pandas DataFrame
