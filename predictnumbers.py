@@ -13,8 +13,8 @@ with open('results.json') as f:
     result = json.load(f)
 
 # 这里改因素
-with open('surgerynumber.json') as f:
-    surgery_num = json.load(f)
+with open('snumber.json') as f:
+    s_num = json.load(f)
 
 with open('stage.json') as f:
     stages = json.load(f)
@@ -34,7 +34,7 @@ for id, data in result.items():
 
 for identifier, value in filtered_results.items():
     mean = value['mean']
-    num = surgery_num.get(identifier, 0)
+    num = s_num.get(identifier, 0)
     x.append(mean)
     y.append(num)
 
@@ -117,8 +117,8 @@ with open('results.json') as f:
 
 
 # 这里改因素
-with open('surgerynumber.json') as f:
-    surgery_num = json.load(f)
+with open('snumber.json') as f:
+    s_num = json.load(f)
 
 with open('stage.json') as f:
     stages = json.load(f)
@@ -138,7 +138,7 @@ for id, data in result.items():
 
 for identifier, value in filtered_results.items():
     mean = value['mean']
-    num = surgery_num.get(identifier, 0)
+    num = s_num.get(identifier, 0)
     x.append(mean)
     y.append(num)
 
